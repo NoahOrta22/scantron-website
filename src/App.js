@@ -1,6 +1,5 @@
-import { PageRouter } from './PageRouter.js'
+import { PageRouter } from "./PageRouter.js";
 import "./App.css";
-
 
 function App() {
   return (

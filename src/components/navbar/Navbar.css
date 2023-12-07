@@ -1,35 +1,38 @@
 .nav {
-    background-color: #2a61ba;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: top;
-    gap: 2rem;
-    padding: 0 1rem;
-    align-items: top;
+  position: absolute;
+  background-color: #2a61ba;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .site-title {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .nav ul {
-    padding: 0;
-    margin: 0; 
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
 }
 
 .nav a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .nav li.active {
-    background-color: #555adc
+  background-color: #555adc;
 }
 
 .nav li:hover {
-    background-color: #8789c1
+  background-color: #8789c1;
 }
