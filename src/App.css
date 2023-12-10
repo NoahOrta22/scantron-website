@@ -13,7 +13,8 @@
 
 .auth-form-container,
 .login-form,
-.register-form {
+.register-form,
+.create-course-form {
   display: flex;
   flex-direction: column;
 }

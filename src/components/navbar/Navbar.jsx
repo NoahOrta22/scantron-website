@@ -7,10 +7,10 @@ export const Navbar = () => {
   const location = useLocation();
 
   // Define an array of paths where you want to show the navigation bar
-  const pathsToShowNavBar = ["/home", "/submit-scantron"];
+  const pathsToNotShowNavBar = ["/", "/login", "/register"];
 
   // Check if the current path is in the array of pathsToShowNavBar
-  const shouldShowNavBar = pathsToShowNavBar.includes(location.pathname);
+  const shouldShowNavBar = !pathsToNotShowNavBar.includes(location.pathname);
 
   return shouldShowNavBar ? (
     <nav className="nav">
@@ -20,6 +20,9 @@ export const Navbar = () => {
       <ul>
         <li>
           <NavLink to="/submit-scantron">Submit Scantron</NavLink>
+        </li>
+        <li>
+          <NavLink to="/create-course">Create Course</NavLink>
         </li>
         <li>
           <NavLink to="/">Logout</NavLink>
