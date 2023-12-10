@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Description
+
+This is a the frontend of an in progress project used to easy the process of grading scantrons for teachers
+and help students to get there grades faster. The UI is designed so that teachers will be able to take a picture 
+of the key for the test so the system knows what the answers should be. The students will not be able to see this.
+When the teacher starts a test the website will generate a code for the test that the students will use once they
+complete the test. Once a student finishes their test they will go to the website, type in the class-test code, 
+login, and finally take a picture of their scantron and submit it. 
+
+This project is designed to enable students to not only get their grades back faster, but will also make the 
+grading process easier for teachers and professors. 
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
