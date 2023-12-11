@@ -22,6 +22,5 @@ export async function APIPost(raw, URL) {
     throw new Error(`Registration failed with status: ${response.status}`);
   }
 
-  const result = await response.text();
-  console.log(result);
+  return response;
 }

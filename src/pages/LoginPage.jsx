@@ -1,24 +1,54 @@
 import { React, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { APIPost } from "../components/API/Post";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
+  const [invalidLogin, setInvalidLogin] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-  };
 
-  const handleSubmitLoginClick = () => {
-    {
-      (() => {
-        if (email === "test@gmail.com" && pass === "password") {
+    // set failure variables
+    setLoginFailed(false);
+    setInvalidLogin(false);
+
+    //  Body to be sent for authentication
+    const raw = {
+      email: email,
+      password: pass,
+    };
+
+    const URL = "auth/login";
+
+    try {
+      const response = await APIPost(raw, URL);
+
+      // Everything worked in the API call
+      if (response.ok) {
+        const responseData = await response.json();
+
+        // Check if the response contains an access_token.
+        // The user login data is valid.
+        if (responseData.access_token) {
+          // Valid user, navigate to "/home"
           navigate("/home");
+        } else {
+          // Login Data was invalid
+          setInvalidLogin(true);
+          console.error("Login failed: Invalid response format");
         }
-      })();
+      } else {
+        // API call ran into a problem
+        console.error("Login failed: ", response.statusText);
+        setLoginFailed(true);
+      }
+    } catch (error) {
+      console.error("Login failed: ", error);
     }
   };
 
@@ -47,13 +77,17 @@ export const LoginPage = () => {
           id="password"
           name="password"
         />
-        <button type="submit" onClick={handleSubmitLoginClick}>
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
       <button className="link-btn" onClick={handleRegisterButtonClick}>
         Don't have an account? Register Here!
       </button>
+      {invalidLogin && (
+        <p style={{ color: "red" }}>Invalid username or password. Try again</p>
+      )}
+      {loginFailed && (
+        <p style={{ color: "red" }}>Login Failed! Please try again.</p>
+      )}
     </div>
   );
 };
