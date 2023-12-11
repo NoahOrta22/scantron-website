@@ -3,25 +3,25 @@
 //
 //
 export async function APIPost(raw, URL) {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-    const myBody = JSON.stringify(raw);
+  const myBody = JSON.stringify(raw);
 
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: myBody,
-      redirect: "follow",
-    };
-
-    const response = await fetch("http://127.0.0.1:8000/" + URL, requestOptions);
-
-    if (!response.ok) {
-      // If the response is not OK (status code other than 2xx), throw an error.
-      throw new Error(`Registration failed with status: ${response.status}`);
-    }
-
-    const result = await response.text();
-    console.log(result);
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: myBody,
+    redirect: "follow",
   };
+
+  const response = await fetch("http://127.0.0.1:8000/" + URL, requestOptions);
+
+  if (!response.ok) {
+    // If the response is not OK (status code other than 2xx), throw an error.
+    throw new Error(`Registration failed with status: ${response.status}`);
+  }
+
+  const result = await response.text();
+  console.log(result);
+}

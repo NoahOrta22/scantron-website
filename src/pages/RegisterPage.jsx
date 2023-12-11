@@ -17,18 +17,16 @@ export const RegisterPage = () => {
     const raw = {
       name: name,
       email: email,
-      password: pass
-    }
+      password: pass,
+    };
 
     // location in API
     const URL = "users/teachers";
 
     try {
-      await APIPost(raw, URL)
-      .then(() => navigate("/login"));
-    }
-    catch (error) {
-      console.error("Registration failed: ", error)
+      await APIPost(raw, URL).then(() => navigate("/login"));
+    } catch (error) {
+      console.error("Registration failed: ", error);
     }
   };
 
